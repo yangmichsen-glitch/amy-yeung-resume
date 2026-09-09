@@ -1,751 +1,443 @@
-<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>杨丽梅｜实体商业与连锁经营管理者</title><style>:root{--b:#f7f3ed;--p:#fffdf9;--i:#26211f;--m:#716863;--w:#7b2937;--g:#b18b61;--l:#e2d8ce}*{box-sizing:border-box}body{margin:0;background:var(--b);color:var(--i);font:15px/1.7 -apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif}.wrap{max-width:1120px;margin:auto;padding:0 28px}nav{position:sticky;top:0;background:#f7f3edf2;border-bottom:1px solid var(--l);z-index:2}.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:800;letter-spacing:.12em;color:var(--w)}.links{display:flex;gap:24px}.links a{text-decoration:none;color:var(--m)}.hero{padding:88px 0 55px}.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:50px;align-items:center}.ey,.sn{font-size:12px;letter-spacing:.16em;font-weight:800;color:var(--g)}h1,h2{font-family:'Songti SC','STSong',serif}h1{font-size:72px;line-height:1;margin:15px 0}.sub{font-size:28px;color:var(--w);font-weight:800}.lead{font-size:17px;color:var(--m)}.card{background:linear-gradient(150deg,#8b3342,#5f202b);color:white;padding:34px;border-radius:28px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 20px 50px #4e2d261f}.card h3{font:25px/1.4 'Songti SC','STSong',serif}.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{font-size:12px;border:1px solid #ffffff55;border-radius:99px;padding:6px 10px}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding-bottom:65px}.stat,.box{background:var(--p);border:1px solid var(--l);border-radius:18px}.stat{text-align:center;padding:20px 10px}.stat b{display:block;font-size:27px;color:var(--w)}.stat span{font-size:12px;color:var(--m)}section{padding:68px 0}.head{display:grid;grid-template-columns:210px 1fr;gap:25px;margin-bottom:30px}h2{font-size:43px;line-height:1.2;margin:0}.intro,.box p,.job p{color:var(--m)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.box{padding:27px}.box h3{font-size:22px;margin:7px 0}.case h3{font-size:25px}.case strong{color:var(--w)}.timeline{border-left:1px solid var(--l);margin-left:8px}.job{position:relative;padding:0 0 31px 35px}.job:before{content:'';position:absolute;left:-7px;top:8px;width:10px;height:10px;border:2px solid var(--w);background:var(--b);border-radius:50%}.jobtop{display:flex;justify-content:space-between;gap:20px}.job h3{margin:0}.date{color:var(--g);font-size:13px;font-weight:700}.role{color:var(--w);font-weight:700}.digital{background:#25211f;color:white;border-radius:28px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:35px}.digital p{color:#d3cbc5}.di{border:1px solid #ffffff25;border-radius:13px;padding:14px;margin:10px 0}.di b{color:#dfbf98}.contact{text-align:center;background:var(--p);border:1px solid var(--l);border-radius:28px;padding:45px}.contact a{display:inline-block;margin:7px;padding:10px 18px;border-radius:99px;text-decoration:none;border:1px solid var(--w);color:var(--w);font-weight:700}.contact .primary{background:var(--w);color:white}footer{text-align:center;padding:35px;color:var(--m);font-size:12px}@media(max-width:850px){.hero-grid,.grid2,.digital,.head{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.links{display:none}h1{font-size:52px}}
-/* ===== 动态增强：克制型高管网站动效 ===== */
-html{scroll-behavior:smooth}
-
-/* 首屏渐入 */
-.hero .ey,.hero h1,.hero .subtitle,.hero .lead,.hero .card{
-  opacity:0;
-  transform:translateY(18px);
-  animation:heroIn .75s cubic-bezier(.22,.8,.3,1) forwards;
-}
-.hero h1{animation-delay:.08s}
-.hero .subtitle{animation-delay:.16s}
-.hero .lead{animation-delay:.24s}
-.hero .card{animation-delay:.3s}
-@keyframes heroIn{to{opacity:1;transform:translateY(0)}}
-
-/* 右侧职业卡片轻微悬浮 */
-.hero .card{
-  transition:transform .35s ease,box-shadow .35s ease;
-}
-.hero .card:hover{
-  transform:translateY(-6px) rotate(-.25deg);
-  box-shadow:0 28px 65px rgba(78,45,38,.18);
-}
-
-/* 核心数字卡片 */
-.stat{
-  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
-}
-.stat:hover{
-  transform:translateY(-5px);
-  box-shadow:0 14px 34px rgba(68,48,39,.10);
-  border-color:#cdbba8;
-}
-.stat b{
-  transition:transform .25s ease;
-}
-.stat:hover b{transform:scale(1.05)}
-
-/* 滚动出现 */
-.reveal{
-  opacity:0;
-  transform:translateY(26px);
-  transition:opacity .72s ease,transform .72s cubic-bezier(.22,.8,.3,1);
-}
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-.reveal-delay-1{transition-delay:.06s}
-.reveal-delay-2{transition-delay:.12s}
-.reveal-delay-3{transition-delay:.18s}
-
-/* 能力卡 / 项目卡 hover */
-.box{
-  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
-}
-.box:hover{
-  transform:translateY(-5px);
-  box-shadow:0 16px 38px rgba(68,48,39,.09);
-  border-color:#ccb9a7;
-}
-
-/* 时间轴滚动进度 */
-.timeline{
-  position:relative;
-  border-left-color:transparent!important;
-}
-.timeline:before{
-  content:"";
-  position:absolute;
-  left:-1px;
-  top:0;
-  bottom:0;
-  width:1px;
-  background:var(--l);
-}
-.timeline:after{
-  content:"";
-  position:absolute;
-  left:-1px;
-  top:0;
-  width:2px;
-  height:var(--timeline-progress,0%);
-  background:linear-gradient(var(--w),var(--g));
-  transition:height .12s linear;
-}
-.job{
-  transition:opacity .5s ease,transform .5s ease;
-}
-.job.current:before{
-  background:var(--w);
-  box-shadow:0 0 0 5px rgba(123,41,55,.10);
-}
-
-/* 导航当前章节 */
-.links a{
-  position:relative;
-  transition:color .2s ease;
-}
-.links a:after{
-  content:"";
-  position:absolute;
-  left:0;right:0;bottom:-7px;
-  height:2px;
-  background:var(--w);
-  transform:scaleX(0);
-  transform-origin:center;
-  transition:transform .2s ease;
-}
-.links a.active{color:var(--w)}
-.links a.active:after{transform:scaleX(1)}
-
-/* 数字化深色区轻微呼吸边缘，不做花哨发光 */
-.digital{
-  transition:transform .3s ease,box-shadow .3s ease;
-}
-.digital:hover{
-  transform:translateY(-3px);
-  box-shadow:0 18px 42px rgba(45,33,31,.13);
-}
-
-/* 减少动态偏好 */
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*:before,*:after{
-    animation:none!important;
-    transition:none!important;
-  }
-  .hero .ey,.hero h1,.hero .subtitle,.hero .lead,.hero .card,.reveal{
-    opacity:1!important;
-    transform:none!important;
-  }
-}
-
-
-.case-showcase{display:grid;grid-template-columns:290px 1fr;gap:22px;align-items:stretch}
-.case-tabs{display:flex;flex-direction:column;gap:10px}
-.case-tab{appearance:none;border:1px solid var(--l);background:var(--p);color:var(--i);border-radius:18px;padding:18px;text-align:left;cursor:pointer;transition:.25s ease}
-.case-tab:hover{transform:translateX(4px);border-color:#cbb8a6}
-.case-tab.active{background:var(--w);color:#fff;border-color:var(--w);box-shadow:0 15px 35px rgba(123,41,55,.16)}
-.case-tab-kicker{display:block;font-size:11px;letter-spacing:.14em;font-weight:800;color:var(--g)}
-.case-tab.active .case-tab-kicker{color:#e4c6a2}
-.case-tab-title{display:block;font-size:17px;font-weight:800;margin:3px 0}
-.case-tab-meta{display:block;font-size:12px;color:var(--m)}
-.case-tab.active .case-tab-meta{color:#f0e1e4}
-.case-stage{min-height:465px}
-.case-panel{display:none;grid-template-columns:.78fr 1.22fr;min-height:465px;border:1px solid var(--l);background:var(--p);border-radius:25px;overflow:hidden;opacity:0;transform:translateY(10px) scale(.995)}
-.case-panel.active{display:grid;animation:casePanelIn .42s cubic-bezier(.22,.8,.3,1) forwards}
-@keyframes casePanelIn{to{opacity:1;transform:translateY(0) scale(1)}}
-.case-visual{min-height:100%;padding:30px;background:radial-gradient(circle at 75% 20%,rgba(255,255,255,.10),transparent 28%),linear-gradient(145deg,#8a3241,#5e1f2a);color:#fff;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.case-visual:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-90px;bottom:-90px;border:1px solid rgba(255,255,255,.13);box-shadow:0 0 0 28px rgba(255,255,255,.035),0 0 0 56px rgba(255,255,255,.025)}
-.case-number{font-family:'Songti SC','STSong',serif;font-size:74px;line-height:1;opacity:.22}
-.case-metric{position:relative;z-index:2}.case-metric strong{display:block;font-size:31px;line-height:1.1;margin-bottom:7px}.case-metric span{font-size:13px;opacity:.77}
-.case-copy{padding:34px;display:flex;flex-direction:column;justify-content:center}.case-copy h3{font-size:30px;margin:7px 0 9px}.case-lead{color:var(--m);margin:0 0 20px}
-.case-points{display:grid;gap:11px}.case-points>div{display:grid;grid-template-columns:48px 1fr;gap:12px;border-top:1px solid var(--l);padding-top:11px}.case-points span{color:var(--g);font-size:12px;font-weight:800}.case-points p{margin:0;font-size:14px;color:var(--m)}.case-points b{color:var(--w)}
-@media(max-width:880px){.case-showcase{grid-template-columns:1fr}.case-tabs{display:grid;grid-template-columns:repeat(2,1fr)}.case-tab:hover{transform:translateY(-2px)}.case-panel,.case-panel.active{grid-template-columns:1fr}.case-visual{min-height:180px}}
-@media(max-width:560px){.case-tabs{grid-template-columns:1fr}.case-stage{min-height:0}.case-copy,.case-visual{padding:24px}.case-points>div{grid-template-columns:42px 1fr}}
-</style>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>杨丽梅｜实体商业与连锁经营管理者</title>
+<meta name="description" content="杨丽梅｜15+年实体商业与连锁经营管理经验，覆盖连锁运营、商业项目、多业态经营、品牌与AI数字化。"/>
 <style>
-/* --- Case showcase compatibility fix --- */
-.case-showcase{
-  opacity:1 !important;
-  transform:none !important;
-}
-.case-panel{
-  visibility:hidden;
-  position:absolute;
-  inset:0;
-  width:100%;
-  opacity:0;
-  pointer-events:none;
-}
-.case-stage{
-  position:relative;
-  min-height:465px;
-}
-.case-panel.active{
-  visibility:visible;
-  position:relative;
-  opacity:1;
-  pointer-events:auto;
-  display:grid !important;
-}
-@media(max-width:880px){
-  .case-stage{min-height:0}
-}
-</style>
-
-
-<style>
-/* ==============================
-   Premium refinement layer
-   restrained / executive / editorial
-   ============================== */
 :root{
-  --b:#f4efe8;
-  --p:#fffdfa;
-  --i:#211d1b;
-  --m:#746a64;
-  --w:#722737;
-  --g:#b8956d;
-  --l:#e4d9ce;
-  --soft:#eee5db;
-  --shadow:0 18px 50px rgba(57,39,32,.08);
-  --shadow-strong:0 28px 70px rgba(63,39,32,.13);
+  --bg:#f7f2e9;
+  --paper:#fffdf9;
+  --ink:#202529;
+  --muted:#6f7478;
+  --line:#ded7cb;
+  --wine:#6f2431;
+  --wine2:#8a3444;
+  --gold:#b99358;
+  --gold2:#d6c099;
+  --navy:#17344a;
+  --shadow:0 14px 40px rgba(43,35,25,.08);
 }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  background:
-    radial-gradient(circle at 12% 8%,rgba(184,149,109,.08),transparent 28%),
-    radial-gradient(circle at 90% 0%,rgba(114,39,55,.05),transparent 24%),
-    var(--b);
-  color:var(--i);
-  letter-spacing:.01em;
+  margin:0;background:
+  radial-gradient(1200px 500px at 8% -10%,rgba(185,147,88,.14),transparent 55%),
+  linear-gradient(180deg,#faf6ef 0,#f6f0e6 42%,#f7f3ec 100%);
+  color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,-apple-system,sans-serif;
+  line-height:1.65;
 }
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  opacity:.16;
-  background-image:
-    linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);
-  background-size:32px 32px;
-  mask-image:linear-gradient(to bottom,rgba(0,0,0,.18),transparent 34%);
-  z-index:-1;
+a{color:inherit;text-decoration:none}
+.container{width:min(1160px,calc(100% - 40px));margin:auto}
+.nav{
+  position:sticky;top:0;z-index:30;
+  backdrop-filter:blur(14px);
+  background:rgba(250,246,239,.84);
+  border-bottom:1px solid rgba(185,147,88,.2)
 }
-.wrap{max-width:1180px;padding:0 34px}
-nav{
-  background:rgba(244,239,232,.86);
-  backdrop-filter:blur(18px) saturate(130%);
-  -webkit-backdrop-filter:blur(18px) saturate(130%);
-  border-bottom:1px solid rgba(114,39,55,.08);
-  box-shadow:0 1px 0 rgba(255,255,255,.5) inset;
+.navin{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.05em}
+.brand i{width:9px;height:9px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 5px rgba(111,36,49,.08)}
+.links{display:flex;gap:22px;font-size:14px;color:#555}
+.links a{position:relative;padding:24px 0 20px}
+.links a:after{content:"";position:absolute;left:0;right:100%;bottom:13px;height:2px;background:var(--wine);transition:.25s}
+.links a.active:after,.links a:hover:after{right:0}
+.hero{padding:76px 0 48px}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center}
+.eyebrow{font-size:13px;letter-spacing:.24em;color:var(--wine);font-weight:800;text-transform:uppercase}
+h1{font-family:"Songti SC","STSong","Noto Serif CJK SC",serif;font-size:clamp(42px,6vw,76px);line-height:1.05;margin:14px 0 14px;letter-spacing:.02em}
+.role{font-size:20px;color:var(--navy);font-weight:700}
+.lead{font-size:17px;color:#4d5052;max-width:760px;margin:22px 0 28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:11px 18px;border-radius:999px;border:1px solid var(--wine);font-size:14px;font-weight:700}
+.btn.primary{background:var(--wine);color:white;box-shadow:0 8px 20px rgba(111,36,49,.18)}
+.btn.ghost{background:rgba(255,255,255,.55)}
+.hero-card{
+  background:linear-gradient(145deg,#fffdf9,#f0e8da);
+  border:1px solid rgba(185,147,88,.35);
+  border-radius:28px;padding:30px;box-shadow:var(--shadow);
+  transform-style:preserve-3d;transition:transform .2s ease;
 }
-.nav{height:74px}
-.logo{
-  font-family:"Times New Roman","Songti SC",serif;
-  font-size:15px;
-  letter-spacing:.18em;
-  color:var(--w);
+.hero-card .quote{font-family:"Songti SC","STSong",serif;font-size:25px;line-height:1.5;color:#323436}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.tag{font-size:12px;border:1px solid #d9c9b4;background:rgba(255,255,255,.62);padding:6px 10px;border-radius:999px;color:#5c5144}
+.section{padding:64px 0}
+.section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:28px}
+.kicker{font-size:12px;color:var(--wine);letter-spacing:.18em;font-weight:800}
+h2{font-family:"Songti SC","STSong",serif;font-size:34px;margin:4px 0 0;line-height:1.2}
+.note{color:var(--muted);font-size:14px;max-width:560px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.stat{background:rgba(255,253,249,.72);border:1px solid var(--line);padding:22px 18px;border-radius:18px;min-height:122px}
+.stat b{display:block;font-family:"Songti SC","STSong",serif;font-size:32px;color:var(--wine);font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:#666}
+.grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 6px 18px rgba(30,25,18,.04);transition:.25s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#d1bea1}
+.card h3{margin:0 0 8px;color:var(--navy);font-size:18px}
+.card p{margin:0;color:#62666a;font-size:14px}
+.cases{background:#efe7da;border-top:1px solid #dfd4c2;border-bottom:1px solid #dfd4c2}
+.case-layout{display:grid;grid-template-columns:260px 1fr;gap:24px}
+.case-tabs{display:flex;flex-direction:column;gap:9px}
+.case-tab{border:1px solid #d6c8b6;background:rgba(255,255,255,.5);border-radius:14px;padding:14px 16px;text-align:left;cursor:pointer;font:inherit;color:#4d4b48;transition:.2s}
+.case-tab.active{background:var(--wine);color:white;border-color:var(--wine);transform:translateX(5px)}
+.case-panel{display:none;background:var(--paper);border:1px solid #d8cbb9;border-radius:22px;padding:30px;box-shadow:var(--shadow)}
+.case-panel.active{display:block;animation:panel .35s ease}
+@keyframes panel{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.case-title{display:flex;justify-content:space-between;gap:15px;align-items:start}
+.case-title h3{font-size:25px;margin:0;color:var(--navy)}
+.case-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0}
+.metric{border-top:2px solid var(--gold);padding-top:9px}
+.metric b{display:block;font-size:21px;color:var(--wine)}
+.case-panel p{color:#575b5f}
+.timeline{position:relative;margin-top:10px}
+.timeline:before{content:"";position:absolute;left:14px;top:7px;bottom:7px;width:1px;background:linear-gradient(var(--gold),#d9d1c7)}
+.job{position:relative;padding:0 0 30px 48px}
+.job:last-child{padding-bottom:0}
+.dot{position:absolute;left:7px;top:7px;width:15px;height:15px;border-radius:50%;background:var(--paper);border:4px solid var(--wine);z-index:2}
+.job-head{display:flex;justify-content:space-between;gap:20px}
+.job h3{margin:0;color:var(--navy);font-size:18px}
+.date{color:#8c857c;font-size:13px;white-space:nowrap}
+.job .desc{color:#666;margin:7px 0 0;font-size:14px}
+.ai-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.ai-card{position:relative;overflow:hidden;background:#fffaf4;border:1px solid #dfd0bc;border-radius:18px;padding:20px;min-height:180px}
+.ai-card:before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:3px;background:linear-gradient(90deg,var(--wine),var(--gold))}
+.ai-card small{color:var(--wine);font-weight:800;letter-spacing:.08em}
+.ai-card h3{font-size:17px;margin:9px 0 8px;color:var(--navy)}
+.ai-card p{font-size:13px;color:#64676a;margin:0}
+.stack{margin-top:22px;padding:16px 18px;border:1px dashed #cdbb9f;border-radius:14px;color:#5f5a53;font-size:13px;background:rgba(255,255,255,.5)}
+.contact{padding:70px 0 90px}
+.contact-box{background:linear-gradient(135deg,#2d3134,#1f2426);color:white;border-radius:26px;padding:34px;display:flex;justify-content:space-between;gap:20px;align-items:center;box-shadow:var(--shadow)}
+.contact-box h2{margin:0 0 8px;color:white}
+.contact-box p{margin:0;color:#d9d9d9}
+.contact-info{text-align:right;font-size:14px;color:#eee}
+.footer{padding:24px 0 40px;color:#8d8a84;font-size:12px;text-align:center}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.show{opacity:1;transform:none}
+.hero .reveal{transition-delay:var(--d,0s)}
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}
+  .case-layout{grid-template-columns:1fr}.case-tabs{flex-direction:row;overflow:auto}
+  .case-tab{min-width:150px}.case-tab.active{transform:none}
+  .ai-wrap{grid-template-columns:repeat(2,1fr)}
+  .links{display:none}
 }
-.links{gap:30px}
-.links a{
-  font-size:13px;
-  letter-spacing:.06em;
-  color:#655c57;
+@media(max-width:640px){
+  .container{width:min(100% - 24px,1160px)}
+  .hero{padding-top:48px}.role{font-size:17px}.lead{font-size:15px}
+  .stats,.grid-4,.case-metrics,.ai-wrap{grid-template-columns:1fr}
+  .section{padding:48px 0}.section-head{display:block}
+  .job-head{display:block}.date{margin-top:4px}
+  .contact-box{display:block}.contact-info{text-align:left;margin-top:18px}
+  .hero-card{padding:22px}.hero-card .quote{font-size:21px}
 }
-
-.hero{padding:108px 0 66px}
-.hero-grid{gap:68px}
-.ey{
-  letter-spacing:.22em;
-  color:var(--g);
-  font-size:11px;
-}
-h1{
-  font-size:78px;
-  letter-spacing:.02em;
-  margin:16px 0 12px;
-  font-weight:600;
-}
-.sub{
-  font-family:"Songti SC","STSong",serif;
-  font-size:30px;
-  font-weight:700;
-  color:var(--w);
-  margin-bottom:20px;
-}
-.lead{
-  font-size:17px;
-  line-height:1.95;
-  max-width:760px;
-  color:#655d58;
-}
-.card{
-  border-radius:30px;
-  min-height:372px;
-  padding:38px;
-  background:
-    radial-gradient(circle at 86% 12%,rgba(255,255,255,.12),transparent 25%),
-    linear-gradient(145deg,#853146 0%,#6f2738 46%,#54202c 100%);
-  box-shadow:0 34px 80px rgba(86,40,49,.20);
-  border:1px solid rgba(255,255,255,.10);
-  overflow:hidden;
-  position:relative;
-}
-.card:before{
-  content:"";
-  position:absolute;
-  width:180px;height:180px;
-  border-radius:50%;
-  right:-70px;top:-60px;
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 0 0 24px rgba(255,255,255,.028),0 0 0 48px rgba(255,255,255,.018);
-}
-.card small{
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  opacity:.78;
-}
-.card h3{
-  font-size:27px;
-  line-height:1.55;
-  font-weight:600;
-  margin:18px 0 24px;
-}
-.tags{gap:9px}
-.tag{
-  background:rgba(255,255,255,.05);
-  border-color:rgba(255,255,255,.18);
-  backdrop-filter:blur(4px);
-}
-
-.stats{gap:14px;padding-bottom:82px}
-.stat{
-  padding:24px 14px 22px;
-  border-radius:20px;
-  background:rgba(255,253,250,.88);
-  box-shadow:0 8px 28px rgba(66,47,38,.035);
-}
-.stat b{
-  font-size:29px;
-  font-family:"Times New Roman","Songti SC",serif;
-  font-weight:700;
-  letter-spacing:.01em;
-}
-.stat span{
-  display:block;
-  margin-top:4px;
-  letter-spacing:.02em;
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
 }
 
-section{padding:82px 0}
-.head{
-  grid-template-columns:220px 1fr;
-  gap:34px;
-  align-items:start;
-  margin-bottom:38px;
+.toast{
+  position:fixed;left:50%;bottom:28px;z-index:100;
+  transform:translate(-50%,20px);
+  background:#202529;color:#fff;
+  padding:11px 16px;border-radius:999px;
+  font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.18);
+  opacity:0;pointer-events:none;transition:.25s;
 }
-.sn{
-  font-size:11px;
-  letter-spacing:.19em;
-  padding-top:10px;
-}
-h2{
-  font-size:46px;
-  letter-spacing:.01em;
-  font-weight:600;
-}
-.intro{
-  font-size:15px;
-  max-width:760px;
-  line-height:1.9;
-  margin-top:10px;
-}
-.grid2{gap:20px}
-.box{
-  border-radius:24px;
-  padding:30px;
-  background:rgba(255,253,250,.92);
-  box-shadow:0 10px 30px rgba(65,46,38,.035);
-}
-.box h3{
-  font-family:"Songti SC","STSong",serif;
-  font-size:24px;
-  font-weight:650;
-  margin:10px 0 12px;
-}
-.box p{line-height:1.9}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+button.btn{font:inherit;cursor:pointer}
 
-.case-showcase{
-  gap:26px;
-  grid-template-columns:300px 1fr;
-}
-.case-tabs{gap:12px}
-.case-tab{
-  border-radius:20px;
-  padding:19px 20px;
-  background:rgba(255,253,250,.9);
-  box-shadow:0 8px 24px rgba(65,46,38,.025);
-}
-.case-tab.active{
-  background:
-    radial-gradient(circle at 90% 20%,rgba(255,255,255,.10),transparent 30%),
-    linear-gradient(140deg,#812f43,#682435);
-  box-shadow:0 18px 44px rgba(114,39,55,.18);
-}
-.case-tab-title{font-size:18px}
-.case-panel{
-  border-radius:28px;
-  box-shadow:var(--shadow);
-  border-color:#ded2c6;
-}
-.case-visual{
-  padding:34px;
-  background:
-    radial-gradient(circle at 70% 18%,rgba(255,255,255,.11),transparent 24%),
-    linear-gradient(145deg,#873146 0%,#6d2638 52%,#54202c 100%);
-}
-.case-number{
-  font-size:84px;
-  font-weight:500;
-}
-.case-metric strong{
-  font-family:"Times New Roman","Songti SC",serif;
-  font-size:34px;
-  letter-spacing:.01em;
-}
-.case-copy{padding:40px 42px}
-.case-copy h3{
-  font-family:"Songti SC","STSong",serif;
-  font-size:33px;
-  font-weight:650;
-  letter-spacing:.01em;
-}
-.case-lead{
-  font-size:15px;
-  line-height:1.9;
-  margin-bottom:24px;
-}
-.case-points{gap:13px}
-.case-points>div{
-  grid-template-columns:56px 1fr;
-  gap:14px;
-  padding-top:13px;
-}
-.case-points span{
-  font-size:11px;
-  letter-spacing:.12em;
-}
-.case-points p{
-  font-size:14px;
-  line-height:1.85;
-}
-.case-points b{
-  font-weight:800;
-  text-decoration:underline;
-  text-decoration-color:rgba(114,39,55,.22);
-  text-underline-offset:3px;
-}
-
-.timeline{
-  margin-left:12px;
-}
-.job{
-  padding:0 0 38px 42px;
-}
-.job:before{
-  left:-8px;
-  width:11px;height:11px;
-}
-.job h3{
-  font-family:"Songti SC","STSong",serif;
-  font-size:21px;
-  font-weight:650;
-}
-.role{
-  margin-top:4px;
-  letter-spacing:.03em;
-}
-.job p{
-  font-size:14px;
-  line-height:1.8;
-}
-.date{
-  font-size:12px;
-  letter-spacing:.08em;
-}
-
-.digital{
-  border-radius:30px;
-  padding:48px;
-  gap:48px;
-  background:
-    radial-gradient(circle at 12% 12%,rgba(184,149,109,.12),transparent 24%),
-    linear-gradient(140deg,#2a2422,#1f1b1a);
-  box-shadow:0 26px 68px rgba(45,33,31,.14);
-}
-.digital h2{color:#fff}
-.ditem{
-  border-color:rgba(255,255,255,.12);
-  background:rgba(255,255,255,.025);
-  border-radius:16px;
-  padding:16px 17px;
-}
-
-.contact{
-  border-radius:30px;
-  padding:56px 44px;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(184,149,109,.09),transparent 35%),
-    rgba(255,253,250,.94);
-  box-shadow:var(--shadow);
-}
-.contact p{color:var(--m)}
-.contact a{
-  margin:10px 6px 0;
-  padding:11px 20px;
-  min-width:180px;
-  transition:all .25s ease;
-}
-.contact a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 22px rgba(114,39,55,.12);
-}
-footer{
-  padding:42px 20px 50px;
-  letter-spacing:.05em;
-}
-
-/* refined interaction */
-.stat:hover,.box:hover{
-  box-shadow:0 18px 44px rgba(69,47,39,.075);
-}
-.case-tab:hover{
-  box-shadow:0 12px 30px rgba(66,45,38,.06);
-}
-.case-tab.active:hover{
-  box-shadow:0 18px 44px rgba(114,39,55,.18);
-}
-::selection{
-  background:rgba(114,39,55,.16);
-  color:var(--i);
-}
-
-/* mobile polish */
-@media(max-width:880px){
-  .wrap{padding:0 22px}
-  .hero{padding-top:72px}
-  h1{font-size:58px}
-  .sub{font-size:26px}
-  .hero-grid{gap:34px}
-  .card{min-height:auto}
-  .head{grid-template-columns:1fr;gap:10px}
-  section{padding:66px 0}
-  h2{font-size:38px}
-  .case-showcase{grid-template-columns:1fr}
-  .case-copy{padding:30px}
-  .digital{padding:34px}
-}
-@media(max-width:560px){
-  .wrap{padding:0 18px}
-  h1{font-size:48px}
-  .sub{font-size:23px}
-  .lead{font-size:15px}
-  .stats{gap:10px}
-  .stat{padding:18px 10px}
-  .stat b{font-size:24px}
-  .contact{padding:38px 22px}
-  .contact a{display:block;min-width:0}
-}
 </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="container navin">
+    <a class="brand" href="#top"><i></i>杨丽梅 · 2026</a>
+    <div class="links">
+      <a href="#strength">经营能力</a><a href="#cases">代表项目</a><a href="#career">职业履历</a><a href="#ai">AI能力</a><a href="#contact">联系</a>
+    </div>
+  </div>
+</nav>
 
-</head><body><nav><div class='wrap nav'><div class='logo'>YANG LIMEI</div><div class='links'><a href='#a'>核心能力</a><a href='#c'>代表项目</a><a href='#j'>职业历程</a><a href='#d'>数字化能力</a></div></div></nav><div class='hero'><div class='wrap hero-grid'><div><div class='ey'>EXECUTIVE PROFILE · 经营管理</div><h1>杨丽梅</h1><div class='sub'>实体商业与连锁经营管理者</div><p class='lead'>15+年连锁餐饮、商业地产、文旅及创新业态经营管理经验。职业路径覆盖一线门店、多店运营、创新项目负责人、项目总经理及总经办复合管理岗位。长期负责经营目标、团队管理、标准化体系、商业项目、品牌运营及数字化提效。</p></div><div class='card'><div><small>职业方向</small><h3>以经营结果为核心，连接连锁运营、商业项目、组织协同与数字化提效。</h3><div class='tags'><span class='tag'>连锁经营</span><span class='tag'>餐饮运营</span><span class='tag'>商业项目</span><span class='tag'>多业态管理</span><span class='tag'>总经办协同</span><span class='tag'>品牌0-1</span><span class='tag'>活动运营</span><span class='tag'>AI数字化</span></div></div><small>广州 · 本科 · 粤语 / 国语 / 英语</small></div></div></div><div class='wrap stats'><div class='stat'><b>28+家</b><span>直营及加盟门店统筹</span></div><div class='stat'><b>5城10店</b><span>跨城市品牌复制</span></div><div class='stat'><b>70%→90%</b><span>空间出租率提升</span></div><div class='stat'><b>25%</b><span>标准化体系推动人效提升</span></div><div class='stat'><b>100+场/年</b><span>品牌 / 社群 / 商业活动</span></div></div><section id='a'><div class='wrap'><div class='head'><div class='sn'>01 · CORE CAPABILITIES</div><div><h2>核心经营能力</h2><p class='intro'>不以岗位名称定义能力边界，而以实际经营问题和项目结果定义职业价值。</p></div></div><div class='grid2'><div class='box'><div class='sn'>01</div><h3>经营与组织管理</h3><p>年度经营计划、预算与复盘、重点事项推进、会议管理、绩效体系、制度流程、跨部门协同与团队建设。</p></div><div class='box'><div class='sn'>02</div><h3>连锁与多业态运营</h3><p>多店管理、门店筹建、QSC、SOP标准化、成本与人效、供应链、培训体系及跨区域复制。</p></div><div class='box'><div class='sn'>03</div><h3>商业项目与品牌增长</h3><p>商业空间、文旅、产业园及配套业态经营，品牌0-1、会员体系、会务活动、资源整合与经营增长。</p></div><div class='box'><div class='sn'>04</div><h3>数字化与AI提效</h3><p>将ChatGPT、DeepSeek、飞书多维表格、CRM等工具应用于经营分析、信息管理、内容生产与组织协同。</p></div></div></div></section><section id='c'><div class='wrap'><div class='head'><div class='sn'>02 · SELECTED CASES</div><div><h2>代表项目</h2><p class='intro'>用项目背景、关键动作与经营结果展示能力。点击左侧项目，切换查看不同案例。</p></div></div>
-<div class='case-showcase reveal'>
-  <div class='case-tabs' role='tablist' aria-label='代表项目切换'>
-    <button type='button' class='case-tab active' data-case='c22'><span class='case-tab-kicker'>01</span><span class='case-tab-title'>C22 Coffee</span><span class='case-tab-meta'>0-1 · 5城10店</span></button>
-    <button type='button' class='case-tab' data-case='fanxiang'><span class='case-tab-kicker'>02</span><span class='case-tab-title'>凡向生活</span><span class='case-tab-meta'>扭亏 · 多业态</span></button>
-    <button type='button' class='case-tab' data-case='huacheng'><span class='case-tab-kicker'>03</span><span class='case-tab-title'>花城里·陌上花开</span><span class='case-tab-meta'>4000㎡ · 综合体</span></button>
-    <button type='button' class='case-tab' data-case='park'><span class='case-tab-kicker'>04</span><span class='case-tab-title'>智汇PARK</span><span class='case-tab-meta'>总经办 · 数字化</span></button>
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow reveal" style="--d:.05s">EXECUTIVE PROFILE</div>
+      <h1 class="reveal" style="--d:.12s">杨丽梅</h1>
+      <div class="role reveal" style="--d:.19s">实体商业与连锁经营管理者</div>
+      <p class="lead reveal" style="--d:.26s">15+年实体商业与连锁经营管理经验，职业路径覆盖国际连锁门店、多店运营、创新事业部项目负责人、文旅综合体总经理及总经办复合管理岗位。长期聚焦经营结果、连锁标准化、多业态盈利、团队与组织建设、商业项目及品牌运营，并持续将AI、自动化工作流与数字化工具应用于经营管理、组织协同和内容生产。</p>
+      <div class="actions reveal" style="--d:.33s">
+        <a class="btn primary" href="#cases">查看代表项目</a>
+        <button class="btn ghost" id="emailBtn" type="button" title="点击复制邮箱" aria-label="复制邮箱地址">复制邮箱</button>
+      </div>
+    </div>
+    <div class="hero-card reveal" style="--d:.2s" id="tiltCard">
+      <div class="quote">“以经营结果为核心，连接连锁运营、商业项目、组织协同与AI数字化提效。”</div>
+      <div class="tags">
+        <span class="tag">连锁经营</span><span class="tag">多店管理</span><span class="tag">商业项目</span><span class="tag">多业态运营</span>
+        <span class="tag">品牌0-1</span><span class="tag">总经办协同</span><span class="tag">AI数字化</span><span class="tag">自动化工作流</span>
+      </div>
+    </div>
   </div>
-  <div class='case-stage'>
-    <article class='case-panel active' data-panel='c22'>
-      <div class='case-visual'><div class='case-number'>01</div><div class='case-metric'><strong>5城10店</strong><span>1年内完成跨城市复制</span></div></div>
-      <div class='case-copy'><div class='sn'>C22 COFFEE · 合景泰富</div><h3>从0-1到5城10店</h3><p class='case-lead'>主导“咖啡+地产”创新模式，完成品牌、门店、营运体系与跨城市复制。</p>
-      <div class='case-points'><div><span>背景</span><p>地产项目需要兼顾空间体验、客户服务与品牌表达，咖啡业态既要能运营，也要能复制。</p></div><div><span>动作</span><p>参与品牌0-1、预算、筹建、SOP、培训、会员及跨部门协同，建立可复制运营体系。</p></div><div><span>结果</span><p><b>1年10家门店</b>；线上订单占比<b>35%</b>；联合办公访客量提升<b>40%</b>。</p></div></div></div>
-    </article>
-    <article class='case-panel' data-panel='fanxiang'>
-      <div class='case-visual'><div class='case-number'>02</div><div class='case-metric'><strong>70%→90%</strong><span>空间出租率提升</span></div></div>
-      <div class='case-copy'><div class='sn'>凡向生活 · 旭亚集团</div><h3>配套业态扭亏为盈</h3><p class='case-lead'>统筹咖啡、西餐、书店、会务、文创及联合办公等多元业态整体经营。</p>
-      <div class='case-points'><div><span>背景</span><p>配套业态经营分散、盈利能力不足，需要同时优化空间、业态、服务和管理效率。</p></div><div><span>动作</span><p>重构多业态组合，推动SOP、团队培养、活动运营和空间利用率提升。</p></div><div><span>结果</span><p>项目扭亏为盈，利润率提升至<b>8%</b>；出租率<b>70%→90%</b>；人效提升<b>25%</b>。</p></div></div></div>
-    </article>
-    <article class='case-panel' data-panel='huacheng'>
-      <div class='case-visual'><div class='case-number'>03</div><div class='case-metric'><strong>4000㎡</strong><span>多业态文旅艺术综合体</span></div></div>
-      <div class='case-copy'><div class='sn'>花城里·陌上花开 · 花城文旅</div><h3>4000㎡多业态项目经营</h3><p class='case-lead'>全面负责书店、会务、茶饮、咖啡、西餐、西点及物业等多业态综合体经营。</p>
-      <div class='case-points'><div><span>背景</span><p>项目需要兼顾文旅调性、商业经营、活动影响力及高标准政商接待。</p></div><div><span>动作</span><p>推进经营目标、团队、供应链、活动、物业及外部资源协同，并尝试共享合伙人模式。</p></div><div><span>结果</span><p>会务营收增长<b>15%</b>；餐饮增长<b>5%</b>；物业新增收入<b>20万元+/年</b>。</p></div></div></div>
-    </article>
-    <article class='case-panel' data-panel='park'>
-      <div class='case-visual'><div class='case-number'>04</div><div class='case-metric'><strong>管理层支持</strong><span>重点事项 · 品牌 · AI数字化</span></div></div>
-      <div class='case-copy'><div class='sn'>智汇PARK · 总经办 / 品牌 / 数字化</div><h3>管理层支持与组织提效</h3><p class='case-lead'>直接支持公司管理层，推进经营事项、工程协同、品牌建设及数字化应用。</p>
-      <div class='case-points'><div><span>背景</span><p>园区经营涉及工程、招商、品牌、预算与多个部门，重点事项需要持续跟进和信息闭环。</p></div><div><span>动作</span><p>参与年度预算、战略会议、董事会事项、工程改造及品牌内容，并推动AI工具在业务中的应用。</p></div><div><span>结果</span><p>强化重点项目推进、信息整理和跨部门协同效率，让AI成为业务流程中的辅助工具。</p></div></div></div>
-    </article>
+</header>
+
+<section class="section" id="strength">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">RESULTS</div><h2>代表性经营成果</h2></div>
+      <div class="note">用经营结果证明管理能力，而不是只罗列岗位职责。</div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b data-type="int" data-end="28" data-suffix="+家">0</b><span>直营及加盟门店统筹</span></div>
+      <div class="stat"><b data-type="dual" data-a="5" data-b="10">0城0店</b><span>跨城市品牌复制</span></div>
+      <div class="stat"><b data-type="range" data-a="70" data-b="90">0%→0%</b><span>空间出租率提升</span></div>
+      <div class="stat"><b data-type="int" data-end="25" data-suffix="%">0%</b><span>标准化体系推动人效提升</span></div>
+      <div class="stat"><b data-type="int" data-end="100" data-suffix="+场/年">0</b><span>社群 / 品牌活动落地</span></div>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:46px">
+      <div><div class="kicker">CAPABILITIES</div><h2>核心能力</h2></div>
+    </div>
+    <div class="grid-4">
+      <div class="card reveal"><h3>经营与组织管理</h3><p>年度经营计划｜预算与复盘｜经营分析｜成本利润｜组织绩效｜跨部门协同</p></div>
+      <div class="card reveal"><h3>连锁与多业态运营</h3><p>多店管理｜门店筹建｜SOP标准化｜供应链｜团队培养｜区域复制｜盈利模型</p></div>
+      <div class="card reveal"><h3>商业项目与品牌增长</h3><p>产业园/商业空间｜空间经营｜工程协同｜品牌0-1｜会务活动｜资源整合</p></div>
+      <div class="card reveal"><h3>AI与数字化提效</h3><p>飞书业务工作流｜经营/销售数据｜任务跟踪｜AI自动化｜Gemini多模态分析｜Vibe Coding</p></div>
+    </div>
   </div>
-</div></div></section><section id='j'><div class='wrap'><div class='head'><div class='sn'>03 · CAREER JOURNEY</div><div><h2>职业历程</h2><p class='intro'>从一线门店到多店管理、创新项目、项目总经理与总经办管理。</p></div></div><div class='timeline'><div class='job'><div class='jobtop'><h3>智汇PARK</h3><span class='date'>2025.12–2026.03</span></div><div class='role'>总经理助理 / 品牌总监 / AI运营官</div><p>支持管理层推进重点项目、年度预算、品牌建设及数字化应用。</p></div><div class='job'><div class='jobtop'><h3>广东花城文旅创意产业投资有限公司</h3><span class='date'>2024.05–2025.07</span></div><div class='role'>总经理</div><p>全面负责约4000㎡文旅艺术综合体经营、多业态运营、团队与活动管理。</p></div><div class='job'><div class='jobtop'><h3>旭亚集团</h3><span class='date'>2020.05–2024.05</span></div><div class='role'>创新事业部项目负责人</div><p>负责多元业态经营及盈利模式设计，推动扭亏、人效提升与品牌输出。</p></div><div class='job'><div class='jobtop'><h3>合景泰富集团</h3><span class='date'>2018.06–2020.05</span></div><div class='role'>创新事业部项目负责人</div><p>主导C22咖啡、“咖啡+地产”模式、品牌0-1及跨城市复制。</p></div><div class='job'><div class='jobtop'><h3>绿地集团</h3><span class='date'>2017.05–2018.06</span></div><div class='role'>营运负责人</div><p>负责产业配套、自营品牌、销售、团队、预算及地产项目协同。</p></div><div class='job'><div class='jobtop'><h3>铂涛集团 · MORA Coffee</h3><span class='date'>2014.07–2017.04</span></div><div class='role'>营运经理</div><p>统筹28家直营及加盟门店，推进标准化、区域KPI与管理团队建设。</p></div><div class='job'><div class='jobtop'><h3>COSTA · Pacific Coffee · Starbucks</h3><span class='date'>2004.11–2014.07</span></div><div class='role'>店长 / 门店经营管理</div><p>长期负责门店经营、服务、成本、团队、人才培养和市场活动。</p></div></div></div></section><section id='d'><div class='wrap'><div class='digital'><div><div class='sn'>04 · DIGITAL & AI</div><h2>数字化是经营能力的加速器</h2><p>不把AI包装成独立技术标签，而是作为经营管理的新增能力：识别重复性工作，用数字化工具提升信息质量、协同效率与执行闭环。</p></div><div><div class='di'><b>AI业务应用：</b> ChatGPT、DeepSeek、Grok及AIGC工具。</div><div class='di'><b>协同与数据：</b> 飞书多维表格、CRM、OA、钉钉等。</div><div class='di'><b>专业资质：</b> AIGC智能交互设计师、人工智能提示词工程师（高级）、人工智能应用技术。</div></div></div></div></section><section><div class='wrap'><div class='contact'><div class='sn'>CONTACT</div><h2>欢迎交流经营管理与合作机会</h2><p>连锁经营 · 餐饮运营 · 商业项目 · 产业园/文旅运营 · 总经办经营管理 · 品牌与数字化提效</p><a class='primary' href='mailto:63196345@qq.com'>63196345@qq.com</a><a href='tel:13751787829'>13751787829</a></div></div></section><footer>© 2026 杨丽梅 · Professional Profile</footer>
+</section>
+
+<section class="section cases" id="cases">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">SELECTED CASES</div><h2>代表项目</h2></div>
+      <div class="note">切换查看四段最能代表经营能力、项目复杂度与结果产出的经历。</div>
+    </div>
+    <div class="case-layout reveal">
+      <div class="case-tabs">
+        <button class="case-tab active" data-case="c22">C22咖啡 · 0-1复制</button>
+        <button class="case-tab" data-case="fan">凡向生活 · 扭亏增效</button>
+        <button class="case-tab" data-case="flower">花城里 · 多业态经营</button>
+        <button class="case-tab" data-case="park">智汇PARK · 管理协同</button>
+      </div>
+      <div>
+        <article class="case-panel active" id="c22">
+          <div class="case-title"><h3>C22咖啡｜咖啡 + 地产创新模式</h3><span class="date">2018.06–2020.05</span></div>
+          <div class="case-metrics">
+            <div class="metric"><b>5城10店</b><span>跨城市复制</span></div>
+            <div class="metric"><b>+40%</b><span>联合办公访客量</span></div>
+            <div class="metric"><b>35%</b><span>线上订单占比</span></div>
+            <div class="metric"><b>0-1</b><span>品牌与营运体系</span></div>
+          </div>
+          <p>主导品牌、门店模型、预算、会员体系与跨城市复制，贯通投资测算、选址设计、工程施工、采购、招募与开业运营，并协调IT、工程、设计、财务、商管等多部门推进。</p>
+        </article>
+        <article class="case-panel" id="fan">
+          <div class="case-title"><h3>凡向生活｜多业态经营与盈利模型</h3><span class="date">2020.05–2024.05</span></div>
+          <div class="case-metrics">
+            <div class="metric"><b>70%→90%</b><span>空间出租率</span></div>
+            <div class="metric"><b>8%</b><span>扭亏后利润率</span></div>
+            <div class="metric"><b>+25%</b><span>人效提升</span></div>
+            <div class="metric"><b>7天</b><span>极简店快速开店</span></div>
+          </div>
+          <p>重构咖啡、西餐西点、书店、会务、文创零售、联合办公等配套业态经营模型，建立SOP、培训与绩效体系，并主导20㎡极简门店模型和年度100+场社群/品牌活动。</p>
+        </article>
+        <article class="case-panel" id="flower">
+          <div class="case-title"><h3>花城里·陌上花开｜文旅艺术综合体</h3><span class="date">2024.05–2025.07</span></div>
+          <div class="case-metrics">
+            <div class="metric"><b>4000㎡</b><span>多业态综合体</span></div>
+            <div class="metric"><b>+15%</b><span>会务营收</span></div>
+            <div class="metric"><b>+5%</b><span>餐饮营收</span></div>
+            <div class="metric"><b>20万+/年</b><span>物业新增收入</span></div>
+          </div>
+          <p>全面负责书店、会务、茶饮、咖啡、西餐、西点及物业等多业态经营，重构岗位职责、KPI与SOP，并统筹十五运会企业家活动、文旅发布会、非遗市集、音乐雅集、艺术展览及政府商务接待。</p>
+        </article>
+        <article class="case-panel" id="park">
+          <div class="case-title"><h3>智汇PARK｜总经办经营协同与数字化</h3><span class="date">2025.12–2026.03</span></div>
+          <div class="case-metrics">
+            <div class="metric"><b>管理层</b><span>经营与决策支持</span></div>
+            <div class="metric"><b>工程</b><span>改造与问题闭环</span></div>
+            <div class="metric"><b>品牌</b><span>内容与园区协同</span></div>
+            <div class="metric"><b>AI</b><span>流程与自动化</span></div>
+          </div>
+          <p>参与年度预算、战略及董事会等管理事项，推进工程改造、空置单元整改、品牌内容与园区场景协同，并推动飞书业务工作流、Codex×飞书、WorkBuddy自动化等AI应用进入实际经营流程。</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="career">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">CAREER</div><h2>职业履历</h2></div>
+      <div class="note">从国际连锁门店一线经营，成长为多店运营、创新项目负责人、项目总经理与总经办复合管理者。</div>
+    </div>
+    <div class="timeline">
+      <div class="job reveal"><i class="dot"></i><div class="job-head"><h3>智汇PARK｜总经理助理 / 品牌总监 / AI运营官</h3><span class="date">2025.12–2026.03</span></div><p class="desc">产业园及城市更新场景，支持管理层推进经营管理、项目改造、品牌建设及数字化应用。</p></div>
+      <div class="job reveal"><i class="dot"></i><div class="job-head"><h3>花城里·陌上花开｜总经理</h3><span class="date">2024.05–2025.07</span></div><p class="desc">全面负责约4000㎡文旅艺术综合体，覆盖多业态经营、组织、活动品牌、资源合作与政府商务接待。</p></div>
+      <div class="job reveal"><i class="dot"></i><div class="job-head"><h3>旭亚集团｜项目负责人（创新事业部）</h3><span class="date">2020.05–2024.05</span></div><p class="desc">负责多元业态整体经营与盈利模式设计，推动扭亏、空间效率、组织标准化及新业态复制。</p></div>
+      <div class="job reveal"><i class="dot"></i><div class="job-head"><h3>合景泰富集团｜项目负责人（创新事业部）</h3><span class="date">2018.06–2020.05</span></div><p class="desc">主导C22咖啡及“咖啡+地产”创新模式0-1，推动5城10店跨城市复制。</p></div>
+      <div class="job reveal"><i class="dot"></i><div class="job-head"><h3>绿地集团｜营运负责人</h3><span class="date">2017.05–2018.06</span></div><p class="desc">负责产业配套与自营咖啡品牌运营，筹划20+门店并推动经营增长。</p></div>
+      <div class="job reveal"><i class="dot"></i><div class="job-head"><h3>铂涛集团 MORA COFFEE｜营运经理</h3><span class="date">2014.07–2017.04</span></div><p class="desc">统筹28家直营及加盟门店，推动标准化3.0门店模型与区域团队管理。</p></div>
+      <div class="job reveal"><i class="dot"></i><div class="job-head"><h3>COSTA Coffee / Pacific Coffee / Starbucks｜店长及门店管理</h3><span class="date">2004.11–2014.07</span></div><p class="desc">十年国际连锁一线经营基础，覆盖营收、服务、质量、成本、团队、培训与人才梯队。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ai">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">AI × BUSINESS × AUTOMATION</div><h2>AI × 经营管理 × 自动化</h2></div>
+      <div class="note">不是把AI作为工具清单，而是把它转化为可执行、可复用、可持续优化的业务工作流。</div>
+    </div>
+    <div class="ai-wrap">
+      <div class="ai-card reveal"><small>01</small><h3>AI业务场景落地</h3><p>招商营运、客户管理、经营信息整理、品牌内容、知识管理与日常经营协同。</p></div>
+      <div class="ai-card reveal"><small>02</small><h3>AI × 飞书数字化经营</h3><p>客户、招商、任务跟踪、销售投入产出、经营复盘工作流，并实践Codex×飞书协同。</p></div>
+      <div class="ai-card reveal"><small>03</small><h3>AI自动化与内容工作流</h3><p>WorkBuddy自动化、公众号内容更新、小红书AI内容工作流与批量化生产提效。</p></div>
+      <div class="ai-card reveal"><small>04</small><h3>Gemini多模态分析</h3><p>拆解对标视频的选题、钩子、结构、节奏、视觉与转化要素，提炼方法论与SOP。</p></div>
+      <div class="ai-card reveal"><small>05</small><h3>AI Coding与智能体协同</h3><p>使用Codex与Vibe Coding完成网站、网页与轻量业务工具原型，并探索Agent持续执行。</p></div>
+    </div>
+    <div class="stack reveal"><b>AI & Automation Stack：</b> ChatGPT · Gemini · DeepSeek · Codex · Grok · WorkBuddy · Obsidian · 飞书多维表格 · CRM<br><b>专业资质：</b>AIGC智能交互设计师｜人工智能提示词工程师（高级）｜人工智能应用技术</div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div><h2>期待与合适的团队连接</h2><p>经营管理 · 连锁运营 · 商业项目 · 多业态经营 · 总经办协同 · AI数字化提效</p></div>
+      <div class="contact-info">13751787829<br><button id="emailTextBtn" type="button" title="点击复制邮箱" aria-label="复制邮箱地址" style="all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:3px">63196345@qq.com</button><br>华南师范大学 · 旅游管理 · 本科</div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast">邮箱已复制：63196345@qq.com</div>
+<footer class="footer">杨丽梅 · 个人职业履历网站 · 2026</footer>
+
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // 1) 滚动渐入
-  const revealTargets = [
-    ...document.querySelectorAll('.head'),
-    ...document.querySelectorAll('.box'),
-    ...document.querySelectorAll('.job'),
-    document.querySelector('.digital'),
-    document.querySelector('.contact')
-  ].filter(Boolean);
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  revealTargets.forEach((el, i) => {
-    el.classList.add('reveal');
-    if (i % 3 === 1) el.classList.add('reveal-delay-1');
-    if (i % 3 === 2) el.classList.add('reveal-delay-2');
-  });
+  // 进入视区渐显
+  const revealEls = document.querySelectorAll('.reveal');
+  if(reduced){ revealEls.forEach(el=>el.classList.add('show')); }
+  else{
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}
+      });
+    },{threshold:.12});
+    revealEls.forEach(el=>io.observe(el));
+  }
 
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, {threshold: 0.12});
-  revealTargets.forEach(el => revealObserver.observe(el));
-
-  // 2) 核心数字 Count-up，只执行一次
-  const statValues = [
-    {fmt:v => Math.round(v) + '+家', end:28},
-    {fmt:v => Math.round(v) + '城10店', end:5},
-    {fmt:v => '70%→' + Math.round(v) + '%', start:70, end:90},
-    {fmt:v => Math.round(v) + '%', end:25},
-    {fmt:v => Math.round(v) + '+场/年', end:100}
-  ];
-  const statEls = [...document.querySelectorAll('.stat b')];
+  // 3秒数字动态
+  const statBox = document.querySelector('.stats');
+  const counters = [...document.querySelectorAll('.stat b')];
   let counted = false;
-
-  const statsBlock = document.querySelector('.stats');
-  if (statsBlock) {
-    const statObserver = new IntersectionObserver(entries => {
-      if (!entries[0].isIntersecting || counted) return;
-      counted = true;
-      const duration = 1100;
-      const startTime = performance.now();
-
-      function tick(now) {
-        const p = Math.min(1, (now - startTime) / duration);
-        const eased = 1 - Math.pow(1 - p, 3);
-        statEls.forEach((el, i) => {
-          const cfg = statValues[i];
-          if (!cfg) return;
-          const start = cfg.start || 0;
-          const v = start + (cfg.end - start) * eased;
-          el.textContent = cfg.fmt(v);
-        });
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-      statObserver.disconnect();
-    }, {threshold:.35});
-    statObserver.observe(statsBlock);
-  }
-
-  // 3) 时间轴随滚动推进
-  const timeline = document.querySelector('.timeline');
-  const jobs = [...document.querySelectorAll('.job')];
-  function updateTimeline(){
-    if (!timeline) return;
-    const rect = timeline.getBoundingClientRect();
-    const vh = window.innerHeight;
-    const start = vh * .72;
-    const total = rect.height;
-    const passed = start - rect.top;
-    const progress = Math.max(0, Math.min(1, passed / total));
-    timeline.style.setProperty('--timeline-progress', (progress * 100) + '%');
-
-    jobs.forEach(job => {
-      const r = job.getBoundingClientRect();
-      job.classList.toggle('current', r.top < vh * .55 && r.bottom > vh * .25);
-    });
-  }
-  window.addEventListener('scroll', updateTimeline, {passive:true});
-  window.addEventListener('resize', updateTimeline);
-  updateTimeline();
-
-  // 4) 导航高亮当前章节
-  const navLinks = [...document.querySelectorAll('.links a')];
-  const sections = navLinks
-    .map(a => document.querySelector(a.getAttribute('href')))
-    .filter(Boolean);
-
-  const sectionObserver = new IntersectionObserver(entries => {
-    const visible = entries
-      .filter(e => e.isIntersecting)
-      .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (!visible) return;
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + visible.target.id);
-    });
-  }, {rootMargin:'-25% 0px -55% 0px', threshold:[0,.2,.5]});
-  sections.forEach(s => sectionObserver.observe(s));
-});
-</script>
-
-
-
-
-<script>
-(function(){
-  function initCaseShowcase(){
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.case-tab'));
-    var panels = Array.prototype.slice.call(document.querySelectorAll('.case-panel'));
-    if(!tabs.length || !panels.length) return;
-
-    function activate(key){
-      tabs.forEach(function(tab){
-        var on = tab.getAttribute('data-case') === key;
-        tab.classList.toggle('active', on);
-        tab.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      panels.forEach(function(panel){
-        var on = panel.getAttribute('data-panel') === key;
-        panel.classList.toggle('active', on);
-        panel.setAttribute('aria-hidden', on ? 'false' : 'true');
-      });
+  function animate(el, render, duration=3000){
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min(1,(now-start)/duration);
+      const eased = 1 - Math.pow(1-p,4);
+      el.textContent = render(eased);
+      if(p<1) requestAnimationFrame(tick);
     }
-
-    tabs.forEach(function(tab){
-      tab.addEventListener('click', function(e){
-        e.preventDefault();
-        activate(tab.getAttribute('data-case'));
-      });
+    requestAnimationFrame(tick);
+  }
+  function runCounters(){
+    if(counted) return; counted = true;
+    counters.forEach(el=>{
+      const type = el.dataset.type;
+      if(type==='int'){
+        const end=+el.dataset.end, suffix=el.dataset.suffix||'';
+        animate(el,p=>Math.round(end*p)+suffix);
+      }else if(type==='dual'){
+        const a=+el.dataset.a,b=+el.dataset.b;
+        animate(el,p=>Math.round(a*p)+'城'+Math.round(b*p)+'店');
+      }else if(type==='range'){
+        const a=+el.dataset.a,b=+el.dataset.b;
+        animate(el,p=>Math.round(a*p)+'%→'+Math.round(b*p)+'%');
+      }
     });
-
-    var first = document.querySelector('.case-tab.active') || tabs[0];
-    activate(first.getAttribute('data-case'));
+  }
+  if(reduced) runCounters();
+  else{
+    const sio=new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){runCounters();sio.disconnect();}
+    }),{threshold:.25});
+    if(statBox) sio.observe(statBox);
+    setTimeout(()=>{const r=statBox?.getBoundingClientRect();if(r && r.top<innerHeight && r.bottom>0)runCounters()},900);
   }
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initCaseShowcase);
-  } else {
-    initCaseShowcase();
+  // 案例切换
+  document.querySelectorAll('.case-tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.case-tab').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.case-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.case)?.classList.add('active');
+    });
+  });
+
+  // 导航高亮
+  const navLinks=[...document.querySelectorAll('.links a')];
+  const sections=[...document.querySelectorAll('section[id]')];
+  const navObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+      }
+    });
+  },{rootMargin:'-35% 0px -55% 0px'});
+  sections.forEach(s=>navObs.observe(s));
+
+  // 桌面端轻微倾斜
+  const card=document.getElementById('tiltCard');
+  if(card && !reduced && matchMedia('(pointer:fine)').matches){
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(900px) rotateX(${-y*4}deg) rotateY(${x*5}deg) translateY(-2px)`;
+    });
+    card.addEventListener('mouseleave',()=>card.style.transform='');
   }
+
+  // 邮箱按钮：只复制邮箱地址，不唤起任何外部邮件应用，避免浏览器拦截。
+  const email = '63196345@qq.com';
+  const toast = document.getElementById('toast');
+
+  function showToast(msg){
+    if(!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(window.__mailToastTimer);
+    window.__mailToastTimer = setTimeout(()=>toast.classList.remove('show'), 2200);
+  }
+
+  async function handleEmailClick(){
+    let copied = false;
+    try{
+      await navigator.clipboard.writeText(email);
+      copied = true;
+    }catch(err){
+      // file:// 环境下 clipboard 可能被浏览器限制，使用兼容方案。
+      const ta = document.createElement('textarea');
+      ta.value = email;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try{ copied = document.execCommand('copy'); }catch(e){}
+      ta.remove();
+    }
+    showToast(copied ? `邮箱已复制：${email}` : `邮箱：${email}（请手动复制）`);
+  }
+
+  document.getElementById('emailBtn')?.addEventListener('click', handleEmailClick);
+  document.getElementById('emailTextBtn')?.addEventListener('click', handleEmailClick);
+
 })();
 </script>
-
-
-<script>
-(function(){
-  const card=document.querySelector('.hero .card');
-  if(!card || window.matchMedia('(max-width: 880px)').matches) return;
-  card.addEventListener('mousemove',function(e){
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`translateY(-4px) rotateX(${(-y*2.2).toFixed(2)}deg) rotateY(${(x*2.2).toFixed(2)}deg)`;
-  });
-  card.addEventListener('mouseleave',function(){
-    card.style.transform='';
-  });
-})();
-</script>
-
-</body></html>
+</body>
+</html>
